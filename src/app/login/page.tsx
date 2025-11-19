@@ -16,7 +16,7 @@ export default function Login() {
   
         {/* 로그인 폼 */}
         <div className="relative z-10 flex items-center justify-center h-full px-6">
-          <div className="w-full max-w-sm">
+          <div className="w-full min-w-xs max-w-xs">
             {/* 로고 */}
             <div className="flex justify-center mb-12">
               <div className="relative w-[100px] h-[30px] flex items-center justify-center">
@@ -32,7 +32,7 @@ export default function Login() {
                 placeholder="아이디"
                 className="w-full px-5 py-4 bg-white/90 backdrop-blur-sm rounded-xl text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-lg"
               />
-              
+
               {/* 비밀번호 입력 */}
               <input
                 type="password"

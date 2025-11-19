@@ -31,8 +31,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-blue-primary: #2c2276;
-  --color-blue-secondary: #36a9e1;
+  --color-blue-primary: #008cff;
+  --color-blue-secondary: #1f3c88;
 }
 
 @media (prefers-color-scheme: dark) {
