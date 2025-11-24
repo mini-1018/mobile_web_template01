@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { QrCode, Package, Milk, Battery, Coffee } from "lucide-react";
 
 export default function Home() {
   const currentPoint = 2600;
@@ -31,38 +30,68 @@ export default function Home() {
             <p className="text-white text-lg mb-1">P</p>
           </div>
           
-         {/* 고래 게이지 */}
-         <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 flex-shrink-0">
-              {/* 배경 고래 (다크 그레이) */}
-              <Image
-                src="/icons/whale.svg"
-                width={48}
-                height={48}
-                alt="whale"
-                className="w-full h-full"
-                style={{ filter: 'brightness(0) saturate(0%) invert(26%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(95%) contrast(90%)' }}
-              />
-              
-              {/* 진행 중인 고래 (흰색) */}
-              <div 
-                className="absolute top-0 left-0 w-full h-full overflow-hidden"
-                style={{ clipPath: `inset(0 ${100 - progress}% 0 0)` }}
-              >
-                <Image
-                  src="/icons/whale.svg"
-                  width={48}
-                  height={48}
-                  alt="whale"
-                  className="w-full h-full"
-                  style={{ filter: 'brightness(0) invert(1)' }}
-                />
+          {/* 고래 게이지 */}
+          <div className="flex items-start gap-4">
+            <div className="relative flex-shrink-0">
+              <div className="relative w-16 h-16">
+                {/* 배경 원 */}
+                <svg className="absolute top-0 left-0 w-full h-full -rotate-90">
+                  <circle 
+                    cx="32" cy="32" r="28"
+                    stroke="white"
+                    strokeOpacity="0.2"
+                    strokeWidth="4"
+                    fill="none"
+                  />
+                  <circle 
+                    cx="32" cy="32" r="28"
+                    stroke="white"
+                    strokeWidth="4"
+                    fill="none"
+                    strokeDasharray={`${(progress / 100) * 176} 176`}
+                  />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* 배경 고래 (다크 그레이) */}
+                  <div className="relative w-8 h-8">
+                    <Image 
+                      src="/icons/whale.svg" 
+                      width={32} 
+                      height={32} 
+                      alt="whale"
+                      className="absolute"
+                      style={{ filter: 'brightness(0) saturate(0%) invert(26%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(95%) contrast(90%)' }}
+                    />
+                    
+                    {/* 진행 중인 고래 (흰색) */}
+                    <div 
+                      className="absolute left-0 overflow-hidden"
+                      style={{ 
+                        width: '32px',
+                        height: '32px',
+                        clipPath: `inset(0 ${100 - progress}% 0 0)` 
+                      }}
+                    >
+                      <Image
+                        src="/icons/whale.svg"
+                        width={32}
+                        height={32}
+                        alt="whale"
+                        style={{ filter: 'brightness(0) invert(1)' }}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            
-            <p className="text-white text-xs flex-1">
-              <span className="font-bold">{needed}P</span>를 더 적립하면 고래 한 마리를 살릴 수 있어요.
-            </p>
+            <div className="flex-1 pt-1">
+              <p className="text-white text-xs mb-1">
+                <span className="font-bold text-base">{progress.toFixed(0)}%</span> 달성
+              </p>
+              <p className="text-white/80 text-xs">
+                <span className="font-bold">{needed}P</span> 더 모으면 고래를 살릴 수 있어요!
+              </p>
+            </div>
           </div>
         </div>
 
@@ -84,19 +113,29 @@ export default function Home() {
         <div className="backdrop-blur-sm rounded-2xl p-6  bg-white/20 shadow-2xl">
           <h3 className="text-white font-bold text-lg mb-4">적립 내역</h3>
           
-          <div className="grid grid-cols-4 gap-1">
+          <div className="grid grid-cols-3 gap-1">
             {/* 페트 */}
             <button className="flex flex-col items-center gap-2 p-2 rounded-xl transition-colors">
               <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center">
-                <Package className="w-7 h-7 text-[#434343]" />
+                <Image
+                  src="/icons/pet.png"
+                  width={48}
+                  height={48}
+                  alt="pet"
+                />
               </div>
               <span className="text-white text-sm font-medium">페트</span>
             </button>
 
-            {/* 페트&캔 */}
+            {/* 캔 */}
             <button className="flex flex-col items-center gap-2 p-2 rounded-xl transition-colors">
               <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center">
-                <Package className="w-7 h-7 text-[#434343]" />
+                <Image
+                  src="/icons/can.png"
+                  width={36}
+                  height={36}
+                  alt="can"
+                />
               </div>
               <span className="text-white text-sm font-medium">캔</span>
             </button>
@@ -104,7 +143,12 @@ export default function Home() {
             {/* 우유팩 */}
             <button className="flex flex-col items-center gap-2 p-2 rounded-xl transition-colors">
               <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center">
-                <Milk className="w-7 h-7 text-[#434343]" />
+                <Image
+                  src="/icons/milk.png"
+                  width={36}
+                  height={36}
+                  alt="milk"
+                />
               </div>
               <span className="text-white text-sm font-medium">우유팩</span>
             </button>
@@ -112,7 +156,12 @@ export default function Home() {
             {/* 건전지 */}
             <button className="flex flex-col items-center gap-2 p-2 rounded-xl transition-colors">
               <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center">
-                <Battery className="w-7 h-7 text-[#434343]" />
+                <Image
+                  src="/icons/bettery.png"
+                  width={36}
+                  height={36}
+                  alt="bettery"
+                />
               </div>
               <span className="text-white text-sm font-medium">건전지</span>
             </button>
@@ -120,7 +169,12 @@ export default function Home() {
             {/* 종이컵 */}
             <button className="flex flex-col items-center gap-2 p-2 rounded-xl transition-colors">
               <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center">
-                <Coffee className="w-7 h-7 text-[#434343]" />
+                <Image
+                  src="/icons/cup.png"
+                  width={36}
+                  height={36}
+                  alt="cup"
+                />
               </div>
               <span className="text-white text-sm font-medium">종이컵</span>
             </button>
