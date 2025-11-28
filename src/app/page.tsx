@@ -18,7 +18,7 @@ return (
           className="absolute top-0 left-0 w-full h-full object-cover blur-sm"
         >
           {/* <source src="/video/login_bg.mp4" type="video/mp4" /> */}
-          <source src="https://res.cloudinary.com/dqdmfbrfb/video/upload/v1764319281/login_bg_gponje.webm" type="video/webm" />
+          <source src="/video/login_bg.webm" type="video/webm" />
         </video>
   
         {/* 로그인 폼 */}
