@@ -12,7 +12,7 @@ export default function Home() {
       {/* 배경 이미지 */}
       <div className="absolute top-0 left-0 w-full h-full">
         <Image
-          src="/images/home/home_bg2.jpg"
+          src="https://res.cloudinary.com/dqdmfbrfb/image/upload/v1764319529/home_bg2_di4vlf.jpg"
           fill
           alt="background"
           className="object-cover blur-sm"
