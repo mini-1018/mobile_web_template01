@@ -8,7 +8,7 @@ export default function Home() {
   const progress = (remainder / 1000) * 100;
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden">
       {/* 배경 이미지 */}
       <div className="absolute top-0 left-0 w-full h-full">
         <Image
